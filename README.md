@@ -1,5 +1,5 @@
  - Examples of requests to consume some of endpoints from ADK default REST API
- - You can server your ADK agent as a REST API by running
+ - You can server your ADK agent as a REST API by running:
 ````
 adk api_server
 ````
