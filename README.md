@@ -1,25 +1,33 @@
+Examples of requests to consume some of endpoints from ADK default REST API
+You can server your ADK agent as a REST API by running
+````
+adk api_server
+````
+
+List agents
 ````
 curl --location 'http://127.0.0.1:8000/list-apps'
 ````
 
+Get a session ID for the user: 123, agent: agent_test
 ````
-curl --location --request POST 'http://127.0.0.1:8000/apps/agent_corretor/users/123/sessions' \
+curl --location --request POST 'http://127.0.0.1:8000/apps/agent_test/users/123/sessions' \
 --header 'Content-Type: application/json'
 ````
 
+send a message to the agent: agent_test, user: 123 and session: 07942b78-f9ac-4da8-b05f-50b893243dc1
 ````
-
 curl --location 'http://127.0.0.1:8000/run' \
 --header 'Content-Type: application/json' \
 --data '{
-   "appName":"agent_corretor",
+   "appName":"agent_test",
    "userId":"123",
    "sessionId":"07942b78-f9ac-4da8-b05f-50b893243dc1",
    "newMessage":{
       "role":"user",
       "parts":[
          {
-            "text":"Ql o meu nome?"
+            "text":"Hello"
          }
       ]
    },
@@ -27,18 +35,20 @@ curl --location 'http://127.0.0.1:8000/run' \
 }'
 ````
 
+send a message and an image in base64 to the agent: agent_test, user: 123 and session: 07942b78-f9ac-4da8-b05f-50b893243dc1
+
 ````
 curl --location 'http://127.0.0.1:8000/run' \
 --header 'Content-Type: application/json' \
 --data '{
-   "appName":"agent_corretor",
+   "appName":"agent_test",
    "userId":"123",
    "sessionId":"07942b78-f9ac-4da8-b05f-50b893243dc1",
    "newMessage":{
       "role":"user",
       "parts":[
          {
-            "text":"Analise essa imagem"
+            "text":"Describe this image"
          },
          {
             "inlineData":{
